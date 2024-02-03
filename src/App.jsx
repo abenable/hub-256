@@ -1,10 +1,33 @@
+import { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
+
 import './App.css';
-import Home from './pages/index';
+// import Home from './pages/index';
+import Admin from './pages/admin/admin';
+import Layout from './pages/layout/layout';
+import Contact from './pages/contact/contact';
+import About from './pages/about/about';
+import Login from './pages/login/login';
+import PrivateRoutes from './components/privateRoutes';
 
 const App = () => {
+  const [cookie, setCookie, removeCookie] = useCookies(['authToken']);
+
   return (
     <div className='App'>
-      <Home />{' '}
+      {/* <Home />{' '} */}
+      <Routes>
+        <Route path='/' element={<Layout />} />
+        <Route
+          element={<PrivateRoutes auth={cookie.authToken ? true : false} />}
+        >
+          <Route path='/admin' element={<Admin />} />
+        </Route>
+        <Route path='login' element={<Login />} />
+        <Route path='about' element={<About />} />
+        <Route path='contact' element={<Contact />} />
+      </Routes>
     </div>
   );
 };
