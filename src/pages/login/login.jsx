@@ -1,26 +1,26 @@
-import { useState } from 'react';
-import './login.css';
-import axios from 'axios';
-import { useCookies } from 'react-cookie';
-import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import "./login.css";
+import axios from "axios";
+import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [cookie, setCookie, removeCookie] = useCookies(['authToken']);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [, setCookie] = useCookies(["authToken"]);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      const response = await axios.post('http://localhost:5000/auth/login', {
+      const response = await axios.post("http://localhost:5000/auth/login", {
         email,
         password,
       });
-      setCookie('authToken', response.data.access_token);
-      navigate('/');
+      setCookie("authToken", response.data.access_token);
+      navigate("/");
     } catch (error) {
-      console.error('Error submitting email', error);
+      console.error("Error submitting email", error);
     }
   };
 
@@ -28,18 +28,18 @@ const Login = () => {
     <form onSubmit={handleSubmit}>
       <h1>Login</h1>
       <input
-        type='email'
-        placeholder='Email'
+        type="email"
+        placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
       <input
-        type='password'
-        placeholder='Password'
+        type="password"
+        placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button type='submit'>Login</button>
+      <button type="submit">Login</button>
     </form>
   );
 };
