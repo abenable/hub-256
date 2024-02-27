@@ -11,7 +11,7 @@ const About = () => {
         languages, software engineering, and more.
       </p>
       <p>
-        Whether you're a beginner or an experienced developer, hub-256 is your
+        Whether youre a beginner or an experienced developer, hub-256 is your
         go-to resource for staying up-to-date with the ever-evolving tech
         industry.
       </p>
