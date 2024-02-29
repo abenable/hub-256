@@ -3,23 +3,28 @@ import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 
 const Layout = () => {
-  const [cookie, setCookie, removeCookie] = useCookies(["authToken"]);
+  const [cookie, , removeCookie] = useCookies(["authToken"]);
   const navigate = useNavigate();
 
   return (
     <div className="container">
       <header className="header">
-        <h1 className="logo">My Blog</h1>
+        <h1 className="logo">
+          <strong>Hub-256</strong>
+        </h1>
         <nav className="nav">
           <ul className="nav-list">
             <li className="nav-item">
-              <a href="/">Home</a>
+              <a href="/">Blogs</a>
             </li>
             <li className="nav-item">
               <a href="/about">About</a>
             </li>
             <li className="nav-item">
               <a href="/contact">Contact</a>
+            </li>
+            <li className="nav-item">
+              <a href="/get-started">Get Started</a>
             </li>
           </ul>
         </nav>
