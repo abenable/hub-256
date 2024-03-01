@@ -23,12 +23,15 @@ const Layout = () => {
             <li className="nav-item">
               <a href="/contact">Contact</a>
             </li>
-            <li className="nav-item">
-              <a href="/get-started">Get Started</a>
+            <li className="nav-item get-started">
+              <a href="/get-started">
+                <button type="button">Get Started</button>
+              </a>
             </li>
           </ul>
         </nav>
       </header>
+
       <main className="content">
         <p>hello world</p>
         {cookie.authToken ? (
@@ -54,7 +57,7 @@ const Layout = () => {
         )}
       </main>
       <footer className="footer">
-        <p>&copy; 2022 My Blog. All rights reserved.</p>
+        <p>&copy; 2024 My Blog. All rights reserved.</p>
       </footer>
     </div>
   );
