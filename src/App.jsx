@@ -9,7 +9,6 @@ import Contact from "./pages/contact/contact";
 import About from "./pages/about/about";
 import Login from "./pages/login/login";
 import PrivateRoutes from "./components/privateRoutes";
-import Comp from "./components/testing_comp/comp";
 
 const App = () => {
   const [cookie, setCookie, removeCookie] = useCookies(["authToken"]);
@@ -26,7 +25,6 @@ const App = () => {
         </Route>
         <Route path="login" element={<Login />} />
         <Route path="about" element={<About />} />
-        <Route path="comp" element={<Comp />} />
         <Route path="contact" element={<Contact />} />
       </Routes>
     </div>
