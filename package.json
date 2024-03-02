@@ -1,5 +1,6 @@
 {
   "name": "client",
+  "homepage": "https://abenable.github.io/hub-256_client/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
