@@ -1,9 +1,10 @@
 /* Global Styles */
 body {
-  margin: 0;
-  padding: 80px;
+  padding-left: 80px;
+  padding-right: 80px;
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
+  align-items: center;
 }
 
 /* Header Styles */
@@ -13,15 +14,15 @@ body {
   align-items: center;
   position: fixed;
   top: 0;
-  width: 100%;
+  width: 85%;
   height: 50px;
   padding: 15px;
-  background-color: #7dabea;
+  background-color: #ffffff;
   color: rgb(0, 0, 0);
 }
 .header h1 {
   font-size: 45px;
-  width: 15%;
+  width: 20%;
 }
 
 /* Navigation Styles */
@@ -183,7 +184,6 @@ input:focus {
 }
 /* Latest Posts Styles */
 .latest-posts {
-  position: relative;
   margin-top: 30px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);

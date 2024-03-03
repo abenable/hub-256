@@ -1,11 +1,6 @@
-import { useCookies } from "react-cookie";
-import { useNavigate } from "react-router-dom";
 import PostCard from "../../components/postcard/postcard";
 
 const Layout = () => {
-  const [cookie, , removeCookie] = useCookies(["authToken"]);
-  const navigate = useNavigate();
-
   return (
     <div className="container">
       <header className="header">
@@ -71,33 +66,7 @@ const Layout = () => {
             <p>Read article</p>
           </div>
         </div>
-        {cookie.authToken ? (
-          <div>
-            <p>Logged in</p>
-            <button
-              className="button-18"
-              onClick={() => {
-                removeCookie("authToken");
-                navigate("/");
-              }}
-            >
-              Log Out
-            </button>
-          </div>
-        ) : (
-          <button
-            className="button-18"
-            onClick={() => {
-              navigate("/login");
-            }}
-          >
-            Sign in
-          </button>
-        )}
       </main>
-      {/* <div className="footer">
-        <p>&copy; 2024 My Blog. All rights reserved.</p>
-      </div> */}
     </div>
   );
 };
