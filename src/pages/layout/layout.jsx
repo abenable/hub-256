@@ -1,6 +1,25 @@
 import PostCard from "../../components/postcard/postcard";
+import { useEffect, useState } from "react";
 
 const Layout = () => {
+  const [latestPosts, setLatestPosts] = useState([]);
+
+  useEffect(() => {
+    const fetchLatestPosts = async () => {
+      try {
+        const response = await fetch(
+          "https://hub-256-cf70c3960fba.herokuapp.com/blog/latest"
+        );
+        const data = await response.json();
+        setLatestPosts(data);
+      } catch (error) {
+        console.error("Error fetching latest posts:", error);
+      }
+    };
+
+    fetchLatestPosts();
+  }, []);
+
   return (
     <div className="container">
       <header className="header">
@@ -39,12 +58,9 @@ const Layout = () => {
         <div className="post-section">
           <h3>Latest Posts</h3>
           <div className="latest-posts">
-            <PostCard />
-            <PostCard />
-            <PostCard />
-            <PostCard />
-            <PostCard />
-            <PostCard />
+            {latestPosts.map((post) => {
+              return <PostCard key={post._id} post={post} />;
+            })}
           </div>
         </div>
         <div className="target-post">
@@ -64,6 +80,13 @@ const Layout = () => {
               consectetur
             </p>
             <p>Read article</p>
+          </div>
+        </div>
+        <div>
+          <h3>Most popular articles</h3>
+          <div>
+            <div className="popular-post"></div>
+            <div className="posts"></div>
           </div>
         </div>
       </main>
