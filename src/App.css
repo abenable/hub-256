@@ -150,6 +150,7 @@ input:focus {
 }
 
 .intro-title {
+  margin-top: 160px;
   padding: 0;
   font-size: 70px;
   font-weight: 600;
