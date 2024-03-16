@@ -45,7 +45,6 @@ const Layout = () => {
           </ul>
         </nav>
       </header>
-
       <main className="content">
         <div className="intro-post">
           <h2 className="intro-title">Welcome to My Blog</h2>
