@@ -9,7 +9,7 @@ function Header() {
       expand="lg"
       className="bg-body-tertiary"
       sticky="top"
-      style={{ height: "15vh" }}
+      style={{ height: "12vh" }}
     >
       <Container>
         <Navbar.Brand href="#home">Hub-256</Navbar.Brand>
