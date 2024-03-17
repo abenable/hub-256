@@ -28,7 +28,7 @@ function Index() {
     <div>
       <IntroCarousel />
       <Container style={{ marginBottom: "20vh" }}>
-        <h2>Latest Posts</h2>
+        <h2 className="mx-auto">Latest Posts</h2>
         <Row
           xs={1}
           lg={3}

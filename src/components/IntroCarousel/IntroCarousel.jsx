@@ -15,7 +15,7 @@ function IntroCarousel() {
   };
 
   return (
-    <Container style={{ marginBottom: "12vh" }}>
+    <Container className="mb-5">
       <Carousel activeIndex={index} onSelect={handleSelect}>
         <Carousel.Item style={{ height: "75vh" }}>
           <Image alt="First slide" src={firstImg} fluid />
