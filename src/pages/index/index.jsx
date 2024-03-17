@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { auto } from "@popperjs/core";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
@@ -31,9 +30,9 @@ function Index() {
       <Container style={{ marginBottom: "20vh" }}>
         <h2>Latest Posts</h2>
         <Row
-          xs={auto}
-          lg={2}
-          md={auto}
+          xs={1}
+          lg={3}
+          md={2}
           xl={3}
           className="g-4"
           style={{ marginTop: "5vh" }}

@@ -26,7 +26,7 @@ const TestPage = () => {
   return (
     <>
       <Container>
-        <Row xs={auto} lg={2} md={auto} xl={3} className="g-4">
+        <Row xs={auto} lg={auto} md={auto} xl={3} className="g-4">
           {latestPosts.map((post, idx) => (
             <Col key={idx}>
               <PostCard key={post._id} post={post} />
