@@ -15,23 +15,23 @@ function IntroCarousel() {
   };
 
   return (
-    <Container>
+    <Container style={{ marginBottom: "12vh" }}>
       <Carousel activeIndex={index} onSelect={handleSelect}>
-        <Carousel.Item style={{ height: "70vh" }}>
+        <Carousel.Item style={{ height: "75vh" }}>
           <Image alt="First slide" src={firstImg} fluid />
           <Carousel.Caption>
             <h3>First slide label</h3>
             <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
           </Carousel.Caption>
         </Carousel.Item>
-        <Carousel.Item style={{ height: "70vh" }}>
+        <Carousel.Item style={{ height: "75vh" }}>
           <Image alt="Second slide" src={secondImg} fluid />
           <Carousel.Caption>
             <h3>Second slide label</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </Carousel.Caption>
         </Carousel.Item>
-        <Carousel.Item style={{ height: "70vh" }}>
+        <Carousel.Item style={{ height: "75vh" }}>
           <Image alt="Third slide" src={thirdImg} fluid />
           <Carousel.Caption>
             <h3>Third slide label</h3>
