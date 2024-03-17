@@ -1,21 +1,15 @@
+import Card from "react-bootstrap/Card";
+
 const PostCard = ({ post }) => {
-  const { title, description, urlToImage, category, author, publishedAt } =
-    post;
+  const { title, urlToImage } = post;
   return (
-    <div className="post-card">
-      <img src={urlToImage} alt="Post" className="post-card-image" />
-
-      <div className="post-card-content">
-        <p className="post-tag">{category}</p>
-        <h3 className="post-card-title">{title}</h3>
-        <p className="post-card-text">{description}</p>
-      </div>
-
-      <div className="creator">
-        <p className="post-card-author">{author.username}</p>
-        <span className="post-card-date">{publishedAt}</span>
-      </div>
-    </div>
+    <Card style={{ width: "65vh", height: "auto" }}>
+      <Card.Img variant="top" src={urlToImage} style={{ height: "40vh" }} />
+      <Card.Body>
+        <Card.Title>{title}</Card.Title>
+        <Card.Link href="#">Read more.</Card.Link>
+      </Card.Body>
+    </Card>
   );
 };
 
