@@ -11,9 +11,7 @@ function Index() {
   useEffect(() => {
     const fetchLatestPosts = async () => {
       try {
-        const response = await fetch(
-          "https://hub-256-cf70c3960fba.herokuapp.com/blog/latest"
-        );
+        const response = await fetch("https://api.hub256.live/blog/latest");
         const data = await response.json();
         setLatestPosts(data);
       } catch (error) {
