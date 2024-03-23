@@ -3,7 +3,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import PostCard from "../../components/postcard/postcard";
-import IntroCarousel from "../../components/IntroCarousel/IntroCarousel";
+import { HorizontalCard } from "../../components/cards/horizontalCard";
 
 function Index() {
   const [latestPosts, setLatestPosts] = useState([]);
@@ -24,7 +24,7 @@ function Index() {
 
   return (
     <div>
-      <IntroCarousel />
+      <HorizontalCard />
       <Container style={{ marginBottom: "20vh" }}>
         <h2 className="mx-auto">Latest Posts</h2>
         <Row
