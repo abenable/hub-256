@@ -6,6 +6,7 @@ import TestPage from "./pages/testpage/test";
 import Index from "./pages/index";
 import Login from "./pages/login/login";
 import { NavbarMenu } from "./components/navbar/navbar";
+import NewsLetter from "./components/newsletter/newsletter";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/test" element={<TestPage />} />
       </Routes>
+      <NewsLetter />
     </div>
   );
 };
