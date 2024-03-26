@@ -3,7 +3,7 @@ import { Button, Input, Typography } from "@material-tailwind/react";
 export function NewsLetter() {
   return (
     <section className="mt-10 p-10">
-      <div className="container mx-auto flex !w-full max-w-6xl flex-col !items-center justify-center rounded-2xl bg-gray-800 px-6 py-16">
+      <div className="container mx-auto flex !w-full max-w-6xl flex-col !items-center justify-center rounded-2xl bg-gray-700 px-6 py-16">
         <Typography
           className="text-center text-2xl font-bold md:text-3xl"
           color="white"

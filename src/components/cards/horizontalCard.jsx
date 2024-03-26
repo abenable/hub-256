@@ -8,16 +8,16 @@ import {
 
 export function HorizontalCard() {
   return (
-    <Card className="`bg-white shadow-md rounded-md p-4 flex flex-col md:flex-row items-start md:items-center justify-between mx-12 my-5 md:flex">
+    <Card className="`bg-white shadow-md rounded-md p-4 flex flex-col md:flex-row items-start md:items-center justify-between mx-12 my-4 md:flex">
       <CardHeader
         shadow={true}
         floated={true}
-        className="m-0 w-3/5 shrink-0 rounded-md md:w-2/5 rounded-t-md md:rounded-t-none md:rounded-l-md"
+        className="h-full w-full m-0 shrink-0 rounded-md md:w-2/5 rounded-t-md md:rounded-t-none md:rounded-l-md"
       >
         <img
-          src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-          alt="card-image"
-          className="h-full w-full rounded-md object-cover sm:rounded-t-md sm:5/6 sm:rounded-l-md md:rounded-t-none md:rounded-l-md"
+          className="h-96 w-full rounded-lg object-cover object-center shadow-xl shadow-blue-gray-900/50"
+          src="https://images.unsplash.com/photo-1682407186023-12c70a4a35e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80"
+          alt="nature image"
         />
       </CardHeader>
       <CardBody>

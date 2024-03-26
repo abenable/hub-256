@@ -178,7 +178,7 @@ export function NavbarMenu() {
 
   return (
     <Navbar
-      className="sticky top-0 z-10 h-max mx-auto max-w-screen-xl px-4 py-2"
+      className="sticky top-0 z-10 h-max mx-auto max-w-screen-xl px-4 py-1 my-2"
       style={{ marginBottom: "5vh" }}
     >
       <div className="flex items-center justify-between text-blue-gray-900">

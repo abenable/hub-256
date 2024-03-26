@@ -6,7 +6,7 @@ import TestPage from "./pages/testpage/test";
 import Index from "./pages/index";
 import Login from "./pages/login/login";
 import { NavbarMenu } from "./components/navbar/navbar";
-import NewsLetter from "./components/newsletter/newsletter";
+import NewsLetter from "./components/cards/newsletter/newsletter";
 
 const App = () => {
   return (
