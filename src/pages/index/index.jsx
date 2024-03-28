@@ -1,8 +1,34 @@
+import { useEffect, useState } from "react";
 import BrowseCard from "../../components/cards/browseCard";
 import { HorizontalCard } from "../../components/cards/horizontalCard";
 import PostCard from "../../components/cards/postCard";
+import { Button } from "@material-tailwind/react";
 
 export default function IndexPage() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  // Show button when page is scrolled upto given distance
+  const toggleVisibility = () => {
+    if (window.pageYOffset > 300) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  };
+
+  // Set the top cordinate to 0
+  // make scrolling smooth
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
+  }, []);
   const posts = [
     {
       id: 1,
@@ -42,6 +68,19 @@ export default function IndexPage() {
           />
         ))}
       </div>
+      {isVisible && (
+        <div
+          onClick={scrollToTop}
+          className="fixed bottom-2 right-2 cursor-pointer"
+        >
+          <Button
+            size="sm"
+            className="p-2  bg-blue-gray-700 text-white rounded"
+          >
+            Back to top
+          </Button>
+        </div>
+      )}
     </>
   );
 }
