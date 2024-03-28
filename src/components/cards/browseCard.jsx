@@ -11,7 +11,7 @@ const BrowseCard = () => {
   ];
 
   return (
-    <div className="container mx-auto flex !w-full max-w-6xl flex-col !items-center justify-center rounded-2xl px-6 py-16">
+    <div className="container mx-auto flex !w-full max-w-6xl flex-col !items-center justify-center rounded-2xl px-6 py-4">
       <Typography
         variant="h2"
         className="text-dark mb-3.5 text-2xl font-bold sm:text-4xl xl:text-heading-3"
@@ -21,7 +21,7 @@ const BrowseCard = () => {
       <Typography className="font-medium text-base text-gray-600 ">
         Select a category to see more related content
       </Typography>
-      <div className="container mx-auto flex !w-full max-w-6xl !items-center justify-center rounded-2xl px-6 py-5 gap-4 flex-wrap mb-5 my-3">
+      <div className="container mx-auto flex !w-full max-w-6xl !items-center justify-center rounded-2xl px-6 py-3 gap-4 flex-wrap mb-5 my-2">
         {categories.map((category) => (
           <Button
             key={category}
