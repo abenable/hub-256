@@ -9,7 +9,7 @@ import {
 
 export default function PostCard({ title, imgurl, learnMoreUrl, description }) {
   return (
-    <Card className="mt-10 mx-3 sm:w-68 md:w-72 lg:w-96">
+    <Card className="mt-10 mx-6 sm:w-68 md:w-72 lg:w-96">
       <CardHeader color="blue-gray" className="relative h-56">
         <img src={imgurl} alt="card-image" />
       </CardHeader>
