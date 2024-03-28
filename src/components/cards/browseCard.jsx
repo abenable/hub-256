@@ -1,6 +1,15 @@
 import { Typography, Button } from "@material-tailwind/react";
 
 const BrowseCard = () => {
+  const categories = [
+    "All",
+    "Technology",
+    "Lifestyle",
+    "Travel",
+    "Health",
+    "Culture",
+  ];
+
   return (
     <div className="container mx-auto flex !w-full max-w-6xl flex-col !items-center justify-center rounded-2xl px-6 py-16">
       <Typography
@@ -13,42 +22,15 @@ const BrowseCard = () => {
         Select a category to see more related content
       </Typography>
       <div className="container mx-auto flex !w-full max-w-6xl !items-center justify-center rounded-2xl px-6 py-5 gap-4 flex-wrap mb-5 my-3">
-        <Button
-          size="md"
-          className="rounded-full border font-medium capitalize text-base sm:text-sm md:text-base focus:bg-black focus:border-dark focus:text-white hover:bg-gray-900 hover:border-dark hover:text-white ease-in duration-200 bg-gray-100 border-gray-3 text-dark"
-        >
-          All
-        </Button>
-        <Button
-          size="md"
-          className="rounded-full border font-medium capitalize text-base sm:text-sm md:text-base focus:bg-black focus:border-dark focus:text-white hover:bg-gray-900 hover:border-dark hover:text-white ease-in duration-200 bg-gray-100 border-gray-3 text-dark"
-        >
-          Technology
-        </Button>
-        <Button
-          size="md"
-          className="rounded-full border font-medium capitalize text-base sm:text-sm md:text-base focus:bg-black focus:border-dark focus:text-white hover:bg-gray-900 hover:border-dark hover:text-white ease-in duration-200 bg-gray-100 border-gray-3 text-dark"
-        >
-          Lifestyle
-        </Button>
-        <Button
-          size="md"
-          className="rounded-full border font-medium capitalize text-base sm:text-sm md:text-base focus:bg-black focus:border-dark focus:text-white hover:bg-gray-900 hover:border-dark hover:text-white ease-in duration-200 bg-gray-100 border-gray-3 text-dark"
-        >
-          Travel
-        </Button>
-        <Button
-          size="md"
-          className="rounded-full border font-medium capitalize text-base sm:text-sm md:text-base focus:bg-black focus:border-dark focus:text-white hover:bg-gray-900 hover:border-dark hover:text-white ease-in duration-200 bg-gray-100 border-gray-3 text-dark"
-        >
-          Health
-        </Button>
-        <Button
-          size="md"
-          className="rounded-full border font-medium capitalize text-base sm:text-sm md:text-base focus:bg-black focus:border-dark focus:text-white hover:bg-gray-900 hover:border-dark hover:text-white ease-in duration-200 bg-gray-100 border-gray-3 text-dark"
-        >
-          Culture
-        </Button>
+        {categories.map((category) => (
+          <Button
+            key={category}
+            size="md"
+            className="rounded-full border font-medium capitalize text-base sm:text-sm md:text-base focus:bg-black focus:border-dark focus:text-white hover:bg-gray-900 hover:border-dark hover:text-white ease-in duration-200 bg-gray-100 border-gray-3 text-dark"
+          >
+            {category}
+          </Button>
+        ))}
       </div>
     </div>
   );
