@@ -1,24 +1,6 @@
-import { useEffect, useState } from "react";
-import { Button, Typography } from "@material-tailwind/react";
+import { Typography, Button } from "@material-tailwind/react";
 
-const TestPage = () => {
-  const [latestPosts, setLatestPosts] = useState([]);
-
-  useEffect(() => {
-    const fetchLatestPosts = async () => {
-      try {
-        const response = await fetch(
-          "https://hub-256-cf70c3960fba.herokuapp.com/blog/latest"
-        );
-        const data = await response.json();
-        setLatestPosts(data);
-      } catch (error) {
-        console.error("Error fetching latest posts:", error);
-      }
-    };
-
-    fetchLatestPosts();
-  }, []);
+const BrowseCard = () => {
   return (
     <div className="container mx-auto flex !w-full max-w-6xl flex-col !items-center justify-center rounded-2xl px-6 py-16">
       <Typography
@@ -72,4 +54,4 @@ const TestPage = () => {
   );
 };
 
-export default TestPage;
+export default BrowseCard;

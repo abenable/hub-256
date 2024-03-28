@@ -1,26 +1,18 @@
 import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route } from "react-router-dom";
-import About from "./pages/about/about";
-import TestPage from "./pages/testpage/test";
-import Index from "./pages/index";
-import Login from "./pages/login/login";
+import IndexPage from "./pages/index";
+import NewsLetter from "./components/newsletter/newsletter";
 import { NavbarMenu } from "./components/navbar/navbar";
-import NewsLetter from "./components/cards/newsletter/newsletter";
 
-const App = () => {
+function App() {
   return (
     <div className="App">
       <NavbarMenu />
       <Routes>
-        <Route path="" element={<Index />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/test" element={<TestPage />} />
+        <Route path="" element={<IndexPage />} />
       </Routes>
       <NewsLetter />
     </div>
   );
-};
-
+}
 export default App;
