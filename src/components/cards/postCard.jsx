@@ -7,20 +7,20 @@ import {
   Button,
 } from "@material-tailwind/react";
 
-export default function PostCard({ title, imgurl, learnMoreUrl, description }) {
+export default function PostCard({ post }) {
   return (
     <Card className="mt-10 mx-6 sm:w-68 md:w-72 lg:w-96">
       <CardHeader color="blue-gray" className="relative h-56">
-        <img src={imgurl} alt="card-image" />
+        <img src={post.urlToImg} alt="card-image" />
       </CardHeader>
       <CardBody>
         <Typography variant="h5" color="blue-gray" className="mb-2">
-          {title}
+          {post.title}
         </Typography>
-        <Typography>{description}</Typography>
+        <Typography>{post.description}</Typography>
       </CardBody>
       <CardFooter className="pt-0">
-        <a href={learnMoreUrl} className="inline-block">
+        <a href={post.learnMoreUrl} className="inline-block">
           <Button size="sm" variant="text" className="flex items-center gap-2">
             Learn More
             <svg

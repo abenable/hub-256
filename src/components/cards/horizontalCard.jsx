@@ -6,7 +6,7 @@ import {
   Button,
 } from "@material-tailwind/react";
 
-export function HorizontalCard() {
+export function HorizontalCard({ post }) {
   return (
     <Card className="`bg-white shadow-md rounded-md p-2 flex flex-col md:flex-row items-start md:items-center justify-between mx-3 my-4 md:flex">
       <CardHeader
@@ -16,7 +16,7 @@ export function HorizontalCard() {
       >
         <img
           className="h-96 w-full rounded-lg object-cover object-center shadow-xl shadow-blue-gray-900/50"
-          src="https://images.unsplash.com/photo-1682407186023-12c70a4a35e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80"
+          src={post.imgurl}
           alt="nature image"
         />
       </CardHeader>
@@ -26,22 +26,19 @@ export function HorizontalCard() {
           color="purple"
           className="mb-4 inline-flex text-purple-700 bg-purple-50 bg-opacity-50 font-medium text-base py-1 px-3 rounded-full capitalize"
         >
-          lifestyle
+          {post.category}
         </Typography>
         <Typography
           variant="h3"
           color="blue-gray"
           className="mb-2 sm:text-medium "
         >
-          Lyft launching cross-platform service this week
+          {post.title}
         </Typography>
         <Typography color="gray" className="mb-8 font-normal">
-          Like so many organizations these days, Autodesk is a company in
-          transition. It was until recently a traditional boxed software company
-          selling licenses. Yet its own business model disruption is only part
-          of the story
+          {post.description}
         </Typography>
-        <a href="#" className="inline-block">
+        <a href={post.learnMoreUrl} className="inline-block">
           <Button variant="text" className="flex items-center gap-2">
             Learn More
             <svg

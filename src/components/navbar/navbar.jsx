@@ -7,6 +7,12 @@ import {
   IconButton,
   List,
   ListItem,
+  Dialog,
+  Card,
+  CardBody,
+  CardFooter,
+  Input,
+  Checkbox,
   Menu,
   MenuHandler,
   MenuList,
@@ -25,6 +31,7 @@ import {
   TagIcon,
   UserGroupIcon,
 } from "@heroicons/react/24/solid";
+import { Link } from "react-router-dom";
 
 const navListMenuItems = [
   {
@@ -109,7 +116,7 @@ function NavListMenu() {
               selected={isMenuOpen || isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen((cur) => !cur)}
             >
-              Services
+              Resources
               <ChevronDownIcon
                 strokeWidth={2.5}
                 className={`hidden h-3 w-3 transition-transform lg:block ${
@@ -148,18 +155,14 @@ function NavList() {
         color="blue-gray"
         className="font-medium"
       >
-        <ListItem className="flex items-center gap-2 py-2 pr-4">Home</ListItem>
+        <ListItem className="flex items-center gap-2 py-2 pr-4">
+          <Link to={""}>Home</Link>
+        </ListItem>
       </Typography>
       <NavListMenu />
-      <Typography
-        as="a"
-        href="#"
-        variant="h5"
-        color="blue-gray"
-        className="font-medium"
-      >
+      <Typography variant="h5" color="blue-gray" className="font-medium">
         <ListItem className="flex items-center gap-2 py-2 pr-4">
-          Contact Us
+          <Link to={"support"}>Support</Link>
         </ListItem>
       </Typography>
     </List>
@@ -168,6 +171,8 @@ function NavList() {
 
 export function NavbarMenu() {
   const [openNav, setOpenNav] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen((cur) => !cur);
 
   React.useEffect(() => {
     window.addEventListener(
@@ -194,9 +199,44 @@ export function NavbarMenu() {
           <NavList />
         </div>
         <div className="hidden gap-2 lg:flex">
-          <Button variant="gradient" size="md">
-            Subscribe
-          </Button>
+          <>
+            <Button size="md" variant="gradient" onClick={handleOpen}>
+              Subscribe{" "}
+            </Button>
+            <Dialog
+              size="xs"
+              open={open}
+              handler={handleOpen}
+              className="bg-transparent shadow-none"
+            >
+              <Card className="mx-auto w-full max-w-[24rem]">
+                <CardBody className="flex flex-col gap-4">
+                  <Typography variant="h4" color="blue-gray">
+                    Be the first who see the news
+                  </Typography>
+                  <Typography
+                    className="mb-3 font-normal"
+                    variant="paragraph"
+                    color="gray"
+                  >
+                    Your company may not be in the software business, but
+                    eventually, a software company will be in your business.{" "}
+                  </Typography>
+
+                  <Input label="Email" size="lg" />
+
+                  <div className="-ml-2.5 -mt-3">
+                    <Checkbox label="Remember Me" />
+                  </div>
+                </CardBody>
+                <CardFooter className="pt-0">
+                  <Button variant="gradient" onClick={handleOpen} fullWidth>
+                    Subscribe
+                  </Button>
+                </CardFooter>
+              </Card>
+            </Dialog>
+          </>
         </div>
         <IconButton
           variant="text"

@@ -1,34 +1,17 @@
-import { useEffect, useState } from "react";
 import BrowseCard from "../../components/cards/browseCard";
 import { HorizontalCard } from "../../components/cards/horizontalCard";
 import PostCard from "../../components/cards/postCard";
-import { Button } from "@material-tailwind/react";
 
 export default function IndexPage() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  // Show button when page is scrolled upto given distance
-  const toggleVisibility = () => {
-    if (window.pageYOffset > 300) {
-      setIsVisible(true);
-    } else {
-      setIsVisible(false);
-    }
+  const post1 = {
+    title: "Lyft launching cross-platform service this week",
+    category: "Tech",
+    imgurl:
+      "https://images.unsplash.com/photo-1682407186023-12c70a4a35e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80",
+    learnMoreUrl: "#",
+    description:
+      "Like so many organizations these days, Autodesk is a company in transition. It was until recently a traditional boxed software company selling licenses. Yet its own business model disruption is only part of the story — and not even the biggest part. Autodesk is a company",
   };
-
-  // Set the top cordinate to 0
-  // make scrolling smooth
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", toggleVisibility);
-    return () => window.removeEventListener("scroll", toggleVisibility);
-  }, []);
   const posts = [
     {
       id: 1,
@@ -55,32 +38,13 @@ export default function IndexPage() {
 
   return (
     <>
-      <HorizontalCard />
+      <HorizontalCard post={post1} />
       <BrowseCard />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {posts.map((post) => (
-          <PostCard
-            key={post.id}
-            title={post.title}
-            imgurl={post.urlToImage}
-            learnMoreUrl={post.url}
-            description={post.description}
-          />
+          <PostCard key={post.id} post={post} />
         ))}
       </div>
-      {isVisible && (
-        <div
-          onClick={scrollToTop}
-          className="fixed bottom-2 right-2 cursor-pointer"
-        >
-          <Button
-            size="sm"
-            className="p-2  bg-blue-gray-700 text-white rounded"
-          >
-            Back to top
-          </Button>
-        </div>
-      )}
     </>
   );
 }
