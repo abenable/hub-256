@@ -16,7 +16,7 @@ export function HorizontalCard({ post }) {
       >
         <img
           className="h-96 w-full rounded-lg object-cover object-center shadow-xl shadow-blue-gray-900/50"
-          src={post.imgurl}
+          src={post.urlToImg}
           alt="nature image"
         />
       </CardHeader>

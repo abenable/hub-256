@@ -45,10 +45,15 @@ export default function IndexPage() {
     },
     // Add more posts as needed
   ];
+  const post1 = recommendedPost[0];
 
   return (
     <>
-      <HorizontalCard post={recommendedPost[0]} />
+      {post1 ? (
+        <HorizontalCard post={post1} />
+      ) : (
+        <div>Loading...</div> // Or some loading spinner.
+      )}
       <BrowseCard />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {posts.map((post) => (
