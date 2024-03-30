@@ -1,17 +1,27 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import BrowseCard from "../../components/cards/browseCard";
 import { HorizontalCard } from "../../components/cards/horizontalCard";
 import PostCard from "../../components/cards/postCard";
 
 export default function IndexPage() {
-  const post1 = {
-    title: "Lyft launching cross-platform service this week",
-    category: "Tech",
-    imgurl:
-      "https://images.unsplash.com/photo-1682407186023-12c70a4a35e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80",
-    learnMoreUrl: "#",
-    description:
-      "Like so many organizations these days, Autodesk is a company in transition. It was until recently a traditional boxed software company selling licenses. Yet its own business model disruption is only part of the story — and not even the biggest part. Autodesk is a company",
-  };
+  const [recommendedPost, getRecommendedPost] = useState([]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await axios.get(
+          "https://api.hub256.live/blog/recommended"
+        );
+        getRecommendedPost(response.data);
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
+    };
+
+    fetchPosts();
+  }, []);
+
   const posts = [
     {
       id: 1,
@@ -38,7 +48,7 @@ export default function IndexPage() {
 
   return (
     <>
-      <HorizontalCard post={post1} />
+      <HorizontalCard post={recommendedPost} />
       <BrowseCard />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {posts.map((post) => (

@@ -8,7 +8,6 @@ import { Button } from "@material-tailwind/react";
 import Blogs from "./pages/blogs/blogs";
 import BlogDetails from "./pages/blogDetails/blogDetails";
 import Support from "./pages/support/support";
-import { SubscribeForm } from "./components/subscribe/subscribe";
 
 function App() {
   const [isVisible, setIsVisible] = useState(false);
@@ -42,7 +41,6 @@ function App() {
         <Route path="" element={<IndexPage />} />
         <Route path="blogs" element={<Blogs />} />
         <Route path="support" element={<Support />} />
-        <Route path="subscribe" element={<SubscribeForm />} />
         <Route path="blogdetails" element={<BlogDetails />} />
       </Routes>
       <NewsLetter />
