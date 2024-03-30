@@ -8,6 +8,8 @@ import { Button } from "@material-tailwind/react";
 import Blogs from "./pages/blogs/blogs";
 import BlogDetails from "./pages/blogDetails/blogDetails";
 import Support from "./pages/support/support";
+import CreatePost from "./pages/createPost/createPost";
+import { Register } from "./pages/register/register";
 
 function App() {
   const [isVisible, setIsVisible] = useState(false);
@@ -39,6 +41,8 @@ function App() {
       <NavbarMenu />
       <Routes>
         <Route path="" element={<IndexPage />} />
+        <Route path="register" element={<Register />} />
+        <Route path="newpost" element={<CreatePost />} />
         <Route path="blogs" element={<Blogs />} />
         <Route path="support" element={<Support />} />
         <Route path="blogdetails" element={<BlogDetails />} />
