@@ -5,9 +5,10 @@ const BrowseCard = () => {
     "All",
     "Technology",
     "Lifestyle",
-    "Travel",
+    "Sports",
     "Health",
-    "Culture",
+    "Business",
+    "Politics",
   ];
 
   return (
