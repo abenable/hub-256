@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import BrowseCard from "../../components/cards/browseCard";
 import { HorizontalCard } from "../../components/cards/horizontalCard";
 import PostCard from "../../components/cards/postCard";
+import { Spinner } from "@material-tailwind/react";
 
 export default function IndexPage() {
   const [recommendedPost, getRecommendedPost] = useState([]);
@@ -52,7 +53,7 @@ export default function IndexPage() {
       {post1 ? (
         <HorizontalCard post={post1} />
       ) : (
-        <div>Loading...</div> // Or some loading spinner.
+        <Spinner className="h-16 w-16 text-gray-900/50" /> // Or some loading spinner.
       )}
       <BrowseCard />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
