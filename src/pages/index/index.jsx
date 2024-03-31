@@ -53,7 +53,9 @@ export default function IndexPage() {
       {post1 ? (
         <HorizontalCard post={post1} />
       ) : (
-        <Spinner className="h-16 w-16 text-gray-900/50" /> // Or some loading spinner.
+        <div className="justify-center items-center flex">
+          <Spinner className="h-16 w-16 text-gray-900/50" />
+        </div>
       )}
       <BrowseCard />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
