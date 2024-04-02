@@ -3,8 +3,10 @@ import { useEffect, useState } from "react";
 import BrowseCard from "../../components/cards/browseCard";
 import { HorizontalCard } from "../../components/cards/horizontalCard";
 import { Spinner } from "@material-tailwind/react";
+import PostCard from "../../components/cards/postCard";
 
 export default function IndexPage() {
+  const [latestPosts, getLatestPosts] = useState();
   const [recommendedPost, getRecommendedPost] = useState();
 
   useEffect(() => {
@@ -22,10 +24,30 @@ export default function IndexPage() {
     fetchRecommended();
   }, []);
 
+  useEffect(() => {
+    const fetchLatestPosts = async () => {
+      try {
+        const response = await axios.get("https://api.hub256.live/blog/latest");
+        getLatestPosts(response.data);
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
+    };
+
+    fetchLatestPosts();
+  }, []);
+
   return (
     <>
       {recommendedPost ? (
         <HorizontalCard post={recommendedPost} />
+      ) : (
+        <div className="justify-center items-center flex">
+          <Spinner className="h-16 w-16 text-gray-900/50" />
+        </div>
+      )}
+      {latestPosts ? (
+        latestPosts.map((post) => <PostCard key={post._id} post={post} />)
       ) : (
         <div className="justify-center items-center flex">
           <Spinner className="h-16 w-16 text-gray-900/50" />
