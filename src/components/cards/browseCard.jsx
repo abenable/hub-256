@@ -1,6 +1,30 @@
 import { Typography, Button } from "@material-tailwind/react";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import PostCard from "./postCard";
+import { Spinner } from "@material-tailwind/react";
 
 const BrowseCard = () => {
+  const [posts, setPosts] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const url =
+          selectedCategory === "All"
+            ? "https://api.hub256.live/blog/all"
+            : `https://api.hub256.live/blog/category/${selectedCategory}`;
+        const response = await axios.get(url);
+        setPosts(response.data);
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
+    };
+
+    fetchPosts();
+  }, [selectedCategory]);
+
   const categories = [
     "All",
     "Technology",
@@ -10,6 +34,10 @@ const BrowseCard = () => {
     "Business",
     "Politics",
   ];
+
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
+  };
 
   return (
     <div className="container mx-auto flex !w-full max-w-6xl flex-col !items-center justify-center rounded-2xl px-6 py-4">
@@ -27,11 +55,23 @@ const BrowseCard = () => {
           <Button
             key={category}
             size="md"
-            className="rounded-full border font-medium capitalize text-base sm:text-sm md:text-base focus:bg-black focus:border-dark focus:text-white hover:bg-gray-900 hover:border-dark hover:text-white ease-in duration-200 bg-gray-100 border-gray-3 text-dark"
+            className={`rounded-full border font-medium capitalize text-base sm:text-sm md:text-base focus:bg-black focus:border-dark focus:text-white hover:bg-gray-900 hover:border-dark hover:text-white ease-in duration-200 bg-gray-100 border-gray-3 text-dark ${
+              selectedCategory === category ? "bg-black text-white" : ""
+            }`}
+            onClick={() => handleCategoryClick(category)}
           >
             {category}
           </Button>
         ))}
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {posts && posts.length > 0 ? (
+          posts.map((post) => <PostCard key={post.id} post={post} />)
+        ) : (
+          <div className="justify-center items-center flex">
+            <Spinner className="h-12 w-12" />
+          </div>
+        )}
       </div>
     </div>
   );
