@@ -51,7 +51,9 @@ export default function IndexPage() {
         {posts && posts.length > 0 ? (
           posts.map((post) => <PostCard key={post.id} post={post} />)
         ) : (
-          <Spinner className="h-12 w-12" />
+          <div className="justify-center items-center flex">
+            <Spinner className="h-12 w-12" />
+          </div>
         )}
       </div>
     </>
