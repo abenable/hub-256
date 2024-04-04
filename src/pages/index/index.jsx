@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import BrowseCard from "../../components/cards/browseCard";
 import { HorizontalCard } from "../../components/cards/horizontalCard";
 import { Spinner } from "@material-tailwind/react";
-import PostCard from "../../components/cards/postCard";
+import LatestPostsCard from "../../components/cards/latest";
 
 export default function IndexPage() {
   const [latestPosts, getLatestPosts] = useState();
@@ -47,7 +47,9 @@ export default function IndexPage() {
         </div>
       )}
       {latestPosts ? (
-        latestPosts.map((post) => <PostCard key={post._id} post={post} />)
+        latestPosts.map((post) => (
+          <LatestPostsCard key={post._id} post={post} />
+        ))
       ) : (
         <div className="justify-center items-center flex">
           <Spinner className="h-16 w-16 text-gray-900/50" />
