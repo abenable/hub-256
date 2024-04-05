@@ -6,16 +6,12 @@ import {
   Button,
 } from "@material-tailwind/react";
 
-export function HorizontalCard({ post }) {
+export default function LatestPostsCard({ post }) {
   return (
-    <Card className="`bg-white shadow-md rounded-md p-2 flex flex-col md:flex-row sm:flex-col items-start md:items-center justify-between mx-4 my-4 md:flex">
-      <CardHeader
-        shadow={true}
-        floated={true}
-        className="h-full w-full m-0 shrink-0 rounded-md md:w-2/5 rounded-t-md md:rounded-t-none md:rounded-l-md"
-      >
+    <Card className="`bg-white w-1/2 shadow-md rounded-md p-2 flex flex-row md:flex-row sm:flex-row items-start md:items-center justify-between mx-2 my-6 md:flex">
+      <CardHeader className="h-full w-full m-0 shrink-0 rounded-md md:w-2/5 rounded-t-md md:rounded-t-none md:rounded-l-md">
         <img
-          className="h-96 w-full rounded-lg object-cover object-center shadow-xl shadow-blue-gray-900/50"
+          className="h-full sm:h-32 w-full rounded-lg object-cover object-center shadow-xl"
           src={post.urlToImg}
           alt="nature image"
         />
@@ -24,19 +20,16 @@ export function HorizontalCard({ post }) {
         <Typography
           variant="h6"
           color="purple"
-          className="mb-4 inline-flex text-purple-700 bg-purple-50 bg-opacity-50 font-medium text-base py-1 px-3 rounded-full capitalize"
+          className="mb-4 inline-flex text-purple-700 bg-purple-50 bg-opacity-50 font-medium text-base px-3 rounded-full capitalize"
         >
           {post.category}
         </Typography>
         <Typography
-          variant="h3"
+          variant="h5"
           color="blue-gray"
           className="mb-2 sm:text-medium "
         >
           {post.title}
-        </Typography>
-        <Typography color="gray" className="mb-8 font-normal">
-          {post.description}
         </Typography>
         <a href={post.learnMoreUrl} className="inline-block">
           <Button variant="text" className="flex items-center gap-2">
