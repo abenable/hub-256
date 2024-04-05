@@ -9,12 +9,9 @@ import {
 export default function LatestPostsCard({ post }) {
   return (
     <Card className="`bg-white w-1/2 shadow-md rounded-md p-2 flex flex-row md:flex-row sm:flex-row items-start md:items-center justify-between mx-2 my-6 md:flex">
-      <CardHeader
-        shadow={true}
-        className="h-full w-full m-0 shrink-0 rounded-md md:w-2/5 rounded-t-md md:rounded-t-none md:rounded-l-md"
-      >
+      <CardHeader className="h-full w-full m-0 shrink-0 rounded-md md:w-2/5 rounded-t-md md:rounded-t-none md:rounded-l-md">
         <img
-          className="h-32 w-full rounded-lg object-cover object-center shadow-xl shadow-blue-gray-900/50"
+          className="h-full sm:h-32 w-full rounded-lg object-cover object-center shadow-xl"
           src={post.urlToImg}
           alt="nature image"
         />

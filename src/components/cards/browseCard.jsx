@@ -55,7 +55,7 @@ const BrowseCard = () => {
           <Button
             key={category}
             size="md"
-            className={`rounded-full border font-medium capitalize text-base sm:text-sm md:text-base focus:bg-black focus:border-dark focus:text-white hover:bg-gray-900 hover:border-dark hover:text-white ease-in duration-200 bg-gray-100 border-gray-3 text-dark ${
+            className={`rounded-full border font-medium capitalize text-base sm:text-xs md:text-base focus:bg-black focus:border-dark focus:text-white hover:bg-gray-900 hover:border-dark hover:text-white ease-in duration-200 bg-gray-100 border-gray-3 text-dark ${
               selectedCategory === category ? "bg-black text-white" : ""
             }`}
             onClick={() => handleCategoryClick(category)}
