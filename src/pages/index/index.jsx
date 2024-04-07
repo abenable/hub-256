@@ -10,12 +10,15 @@ export default function IndexPage() {
   const [latestPosts, getLatestPosts] = useState();
   const [recommendedPost, getRecommendedPost] = useState();
 
+  const BASE_URL =
+    import.meta.env.MODE === "development"
+      ? import.meta.env.VITE_LOCAL_URL
+      : import.meta.env.VITE_URL;
+
   useEffect(() => {
     const fetchRecommended = async () => {
       try {
-        const response = await axios.get(
-          "https://api.hub256.live/blog/recommended"
-        );
+        const response = await axios.get(`${BASE_URL}/blog/recommended`);
         getRecommendedPost(response.data);
       } catch (error) {
         console.error("Error fetching data: ", error);
@@ -28,7 +31,7 @@ export default function IndexPage() {
   useEffect(() => {
     const fetchLatestPosts = async () => {
       try {
-        const response = await axios.get("https://api.hub256.live/blog/latest");
+        const response = await axios.get(`${BASE_URL}/blog/latest`);
         getLatestPosts(response.data);
       } catch (error) {
         console.error("Error fetching data: ", error);
