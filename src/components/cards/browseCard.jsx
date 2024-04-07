@@ -8,13 +8,18 @@ const BrowseCard = () => {
   const [posts, setPosts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
 
+  const API_URL =
+    import.meta.env.MODE === "development"
+      ? import.meta.env.VITE_LOCAL_URL
+      : import.meta.env.VITE_URL;
+
   useEffect(() => {
     const fetchPosts = async () => {
       try {
         const url =
           selectedCategory === "All"
-            ? "https://api.hub256.live/blog/all"
-            : `https://api.hub256.live/blog/category/${selectedCategory}`;
+            ? `${API_URL}/blog/all`
+            : `${API_URL}/blog/category/${selectedCategory}`;
         const response = await axios.get(url);
         setPosts(response.data);
       } catch (error) {
@@ -64,7 +69,7 @@ const BrowseCard = () => {
           </Button>
         ))}
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:gap-20">
         {posts && posts.length > 0 ? (
           posts.map((post) => <PostCard key={post.id} post={post} />)
         ) : (

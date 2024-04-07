@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Navbar,
   Collapse,
@@ -12,7 +12,6 @@ import {
   CardBody,
   CardFooter,
   Input,
-  Checkbox,
   Menu,
   MenuHandler,
   MenuList,
@@ -32,6 +31,7 @@ import {
   UserGroupIcon,
 } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const navListMenuItems = [
   {
@@ -173,6 +173,23 @@ export function NavbarMenu() {
   const [openNav, setOpenNav] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen((cur) => !cur);
+  const [email, setEmail] = useState(""); // Initialize email state
+
+  const API_URL =
+    import.meta.env.MODE === "development"
+      ? import.meta.env.VITE_LOCAL_URL
+      : import.meta.env.VITE_URL;
+
+  const subscribe = async () => {
+    try {
+      await axios.post(`${API_URL}/users/subscribe`, {
+        email: email, // Use the email state value
+      });
+      handleOpen();
+    } catch (error) {
+      console.error(error); // Handle the error as needed
+    }
+  };
 
   React.useEffect(() => {
     window.addEventListener(
@@ -208,6 +225,7 @@ export function NavbarMenu() {
               open={open}
               handler={handleOpen}
               className="bg-transparent shadow-none"
+              responsive
             >
               <Card className="mx-auto w-full max-w-[24rem]">
                 <CardBody className="flex flex-col gap-4">
@@ -223,14 +241,15 @@ export function NavbarMenu() {
                     eventually, a software company will be in your business.{" "}
                   </Typography>
 
-                  <Input label="Email" size="lg" />
-
-                  <div className="-ml-2.5 -mt-3">
-                    <Checkbox label="Remember Me" />
-                  </div>
+                  <Input
+                    label="Email"
+                    value={email} // Set the value of the input field to the email state
+                    onChange={(e) => setEmail(e.target.value)} // Update the email state on input change
+                    size="lg"
+                  />
                 </CardBody>
                 <CardFooter className="pt-0">
-                  <Button variant="gradient" onClick={handleOpen} fullWidth>
+                  <Button variant="gradient" onClick={subscribe} fullWidth>
                     Subscribe
                   </Button>
                 </CardFooter>
