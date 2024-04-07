@@ -3,7 +3,7 @@ import { Button, Input, Typography } from "@material-tailwind/react";
 import axios from "axios";
 
 export function NewsLetter() {
-  const [email, setEmail] = useState(""); // Initialize email state
+  const [email, setEmail] = useState("");
 
   const API_URL =
     import.meta.env.MODE === "development"
@@ -13,11 +13,11 @@ export function NewsLetter() {
   const subscribe = async () => {
     try {
       const response = await axios.post(`${API_URL}/users/subscribe`, {
-        email: email, // Use the email state value
+        email: email,
       });
       alert(response.data.message);
     } catch (error) {
-      console.error(error); // Handle the error as needed
+      console.error(error);
     }
   };
 
@@ -41,8 +41,8 @@ export function NewsLetter() {
           <Input
             label="Email"
             color="white"
-            value={email} // Set the value of the input field to the email state
-            onChange={(e) => setEmail(e.target.value)} // Update the email state on input change
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <Button
             color="white"
