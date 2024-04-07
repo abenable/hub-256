@@ -1,6 +1,26 @@
+import { useState } from "react";
 import { Button, Input, Typography } from "@material-tailwind/react";
+import axios from "axios";
 
 export function NewsLetter() {
+  const [email, setEmail] = useState(""); // Initialize email state
+
+  const API_URL =
+    import.meta.env.MODE === "development"
+      ? import.meta.env.VITE_LOCAL_URL
+      : import.meta.env.VITE_URL;
+
+  const subscribe = async () => {
+    try {
+      const response = await axios.post(`${API_URL}/users/subscribe`, {
+        email: email, // Use the email state value
+      });
+      alert(response.data.message);
+    } catch (error) {
+      console.error(error); // Handle the error as needed
+    }
+  };
+
   return (
     <section className="mt-8 p-6">
       <div className="container mx-auto flex !w-full max-w-6xl flex-col !items-center justify-center rounded-2xl bg-gray-800 px-6 py-10">
@@ -18,8 +38,18 @@ export function NewsLetter() {
           software company will be in your business.
         </Typography>
         <div className="mt-2 flex w-full flex-col gap-3 md:w-fit md:flex-row">
-          <Input label="Email" color="white" />
-          <Button color="white" size="md" className="flex-shrink-0">
+          <Input
+            label="Email"
+            color="white"
+            value={email} // Set the value of the input field to the email state
+            onChange={(e) => setEmail(e.target.value)} // Update the email state on input change
+          />
+          <Button
+            color="white"
+            size="md"
+            className="flex-shrink-0"
+            onClick={subscribe}
+          >
             Subscribe
           </Button>
         </div>
