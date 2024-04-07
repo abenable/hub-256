@@ -8,7 +8,7 @@ const BrowseCard = () => {
   const [posts, setPosts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  const BASE_URL =
+  const API_URL =
     import.meta.env.MODE === "development"
       ? import.meta.env.VITE_LOCAL_URL
       : import.meta.env.VITE_URL;
@@ -18,8 +18,8 @@ const BrowseCard = () => {
       try {
         const url =
           selectedCategory === "All"
-            ? `${BASE_URL}/blog/all`
-            : `${BASE_URL}/blog/category/${selectedCategory}`;
+            ? `${API_URL}/blog/all`
+            : `${API_URL}/blog/category/${selectedCategory}`;
         const response = await axios.get(url);
         setPosts(response.data);
       } catch (error) {
