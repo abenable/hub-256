@@ -199,63 +199,57 @@ export function NavbarMenu() {
   }, []);
 
   return (
-    <Navbar
-      className="sticky top-0 z-10 h-max mx-auto max-w-screen-xl px-4 py-2"
-      style={{ marginBottom: "5vh" }}
-    >
+    <Navbar className="sticky top-0 z-10 h-max py-2 mx-auto mt-4 w-full items-center">
       <div className="flex items-center justify-between text-blue-gray-900">
         <Typography
           as="a"
-          href="#"
           variant="h1"
           className="mr-4 cursor-pointer py-1.5 lg:ml-2"
         >
-          hub256
+          Hub256
         </Typography>
         <div className="hidden lg:block">
           <NavList />
         </div>
         <div className="hidden gap-2 lg:flex">
-          <>
-            <Button size="md" variant="gradient" onClick={handleOpen}>
-              Subscribe{" "}
-            </Button>
-            <Dialog
-              size="xs"
-              open={open}
-              handler={handleOpen}
-              className="bg-transparent shadow-none"
-              responsive
-            >
-              <Card className="mx-auto w-full max-w-[24rem]">
-                <CardBody className="flex flex-col gap-4">
-                  <Typography variant="h4" color="blue-gray">
-                    Be the first who see the news
-                  </Typography>
-                  <Typography
-                    className="mb-3 font-normal"
-                    variant="paragraph"
-                    color="gray"
-                  >
-                    Your company may not be in the software business, but
-                    eventually, a software company will be in your business.{" "}
-                  </Typography>
+          <Button size="md" variant="gradient" onClick={handleOpen}>
+            Subscribe{" "}
+          </Button>
+          <Dialog
+            size="xs"
+            open={open}
+            handler={handleOpen}
+            className="bg-transparent shadow-none"
+            responsive
+          >
+            <Card className="mx-auto w-full max-w-[24rem]">
+              <CardBody className="flex flex-col gap-4">
+                <Typography variant="h4" color="blue-gray">
+                  Be the first who see the news
+                </Typography>
+                <Typography
+                  className="mb-3 font-normal"
+                  variant="paragraph"
+                  color="gray"
+                >
+                  Your company may not be in the software business, but
+                  eventually, a software company will be in your business.{" "}
+                </Typography>
 
-                  <Input
-                    label="Email"
-                    value={email} // Set the value of the input field to the email state
-                    onChange={(e) => setEmail(e.target.value)} // Update the email state on input change
-                    size="lg"
-                  />
-                </CardBody>
-                <CardFooter className="pt-0">
-                  <Button variant="gradient" onClick={subscribe} fullWidth>
-                    Subscribe
-                  </Button>
-                </CardFooter>
-              </Card>
-            </Dialog>
-          </>
+                <Input
+                  label="Email"
+                  value={email} // Set the value of the input field to the email state
+                  onChange={(e) => setEmail(e.target.value)} // Update the email state on input change
+                  size="lg"
+                />
+              </CardBody>
+              <CardFooter className="pt-0">
+                <Button variant="gradient" onClick={subscribe} fullWidth>
+                  Subscribe
+                </Button>
+              </CardFooter>
+            </Card>
+          </Dialog>
         </div>
         <IconButton
           variant="text"

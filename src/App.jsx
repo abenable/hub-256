@@ -37,7 +37,7 @@ function App() {
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
   return (
-    <div className="App">
+    <div className="App mx-12">
       <NavbarMenu />
       <Routes>
         <Route path="" element={<IndexPage />} />
