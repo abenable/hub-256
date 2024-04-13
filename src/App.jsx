@@ -5,11 +5,11 @@ import NewsLetter from "./components/newsletter/newsletter";
 import { useEffect, useState } from "react";
 import { Button } from "@material-tailwind/react";
 import Blogs from "./pages/blogs/blogs";
-import BlogDetails from "./pages/blogDetails/blogDetails";
 import Support from "./pages/support/support";
 import CreatePost from "./pages/createPost/createPost";
 import { Register } from "./pages/register/register";
 import Navbar from "./components/navbar/navbar2.0";
+import BlogPage from "./pages/blogPage/blogPage";
 
 function App() {
   const [isVisible, setIsVisible] = useState(false);
@@ -46,7 +46,7 @@ function App() {
         <Route path="newpost" element={<CreatePost />} />
         <Route path="blogs" element={<Blogs />} />
         <Route path="support" element={<Support />} />
-        <Route path="blogdetails" element={<BlogDetails />} />
+        <Route path="blog/id/:postId" element={<BlogPage />} />
       </Routes>
       <NewsLetter />
       {isVisible && (
