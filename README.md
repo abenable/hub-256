@@ -1,3 +1,5 @@
+![Logo](https://github.com/abenable/hub-256/blob/main/src/components/navbar/logo.jpg?raw=true)
+
 # HUB-256
 
 A brief description of your website.
