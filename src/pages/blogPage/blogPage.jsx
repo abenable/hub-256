@@ -16,7 +16,6 @@ const BlogPage = () => {
     const fetchPost = async () => {
       try {
         const response = await axios.get(`${BASE_URL}/blog/id/${postId}`);
-        console.log(response.data);
         getpost(response.data);
       } catch (error) {
         console.error("Error fetching data: ", error);
