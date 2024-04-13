@@ -2,7 +2,6 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import IndexPage from "./pages/index";
 import NewsLetter from "./components/newsletter/newsletter";
-import { NavbarMenu } from "./components/navbar/navbar";
 import { useEffect, useState } from "react";
 import { Button } from "@material-tailwind/react";
 import Blogs from "./pages/blogs/blogs";
@@ -10,6 +9,7 @@ import BlogDetails from "./pages/blogDetails/blogDetails";
 import Support from "./pages/support/support";
 import CreatePost from "./pages/createPost/createPost";
 import { Register } from "./pages/register/register";
+import Navbar from "./components/navbar/navbar2.0";
 
 function App() {
   const [isVisible, setIsVisible] = useState(false);
@@ -37,8 +37,9 @@ function App() {
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
   return (
-    <div className="App mx-12">
-      <NavbarMenu />
+    <div className="App">
+      <Navbar />
+
       <Routes>
         <Route path="" element={<IndexPage />} />
         <Route path="register" element={<Register />} />
