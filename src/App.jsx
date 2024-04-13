@@ -39,6 +39,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
+
       <Routes>
         <Route path="" element={<IndexPage />} />
         <Route path="register" element={<Register />} />
