@@ -45,7 +45,7 @@ const BrowseCard = () => {
   };
 
   return (
-    <div className="container mx-auto flex !w-full max-w-6xl flex-col !items-center justify-center rounded-2xl px-6 py-4">
+    <div className="container flex !w-full max-w-6xl flex-col !items-center justify-center rounded-2xl px-2 py-4">
       <Typography
         variant="h2"
         className="text-dark mb-3.5 text-2xl font-bold sm:text-4xl xl:text-heading-3"
@@ -69,7 +69,7 @@ const BrowseCard = () => {
           </Button>
         ))}
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:gap-20">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:gap-16 p-4">
         {posts && posts.length > 0 ? (
           posts.map((post) => <PostCard key={post.id} post={post} />)
         ) : (
