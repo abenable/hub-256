@@ -5,6 +5,7 @@ import {
   Typography,
   Button,
 } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 
 export function HorizontalCard({ post }) {
   return (
@@ -38,7 +39,7 @@ export function HorizontalCard({ post }) {
         <Typography color="gray" className="mb-8 font-normal">
           {post.description}
         </Typography>
-        <a href={post.learnMoreUrl} className="inline-block">
+        <Link to={`/blog/id/${post._id}`} className="inline-block">
           <Button variant="text" className="flex items-center gap-2">
             Learn More
             <svg
@@ -56,7 +57,7 @@ export function HorizontalCard({ post }) {
               />
             </svg>
           </Button>
-        </a>
+        </Link>
       </CardBody>
     </Card>
   );

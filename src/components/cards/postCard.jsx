@@ -6,21 +6,27 @@ import {
   Typography,
   Button,
 } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 
 export default function PostCard({ post }) {
   return (
     <Card className="my-8 mx-1 sm:w-68 md:w-72 lg:w-96">
       <CardHeader color="blue-gray" className="relative h-56">
-        <img src={post.urlToImg} alt="card-image" />
-      </CardHeader>
-      <CardBody>
-        <Typography variant="h5" color="blue-gray" className="mb-2">
-          {post.title}
-        </Typography>
-        <Typography>{post.description}</Typography>
-      </CardBody>
+        {" "}
+        <Link to={`/blog/id/${post._id}`}>
+          <img src={post.urlToImg} alt="card-image" />
+        </Link>
+      </CardHeader>{" "}
+      <Link to={`/blog/id/${post._id}`}>
+        <CardBody>
+          <Typography variant="h5" color="blue-gray" className="mb-2">
+            {post.title}
+          </Typography>
+          <Typography>{post.description}</Typography>
+        </CardBody>
+      </Link>
       <CardFooter className="pt-0">
-        <a href={post.learnMoreUrl} className="inline-block">
+        <Link to={`/blog/id/${post._id}`} className="inline-block">
           <Button size="sm" variant="text" className="flex items-center gap-2">
             Learn More
             <svg
@@ -38,7 +44,7 @@ export default function PostCard({ post }) {
               />
             </svg>
           </Button>
-        </a>
+        </Link>
       </CardFooter>
     </Card>
   );
