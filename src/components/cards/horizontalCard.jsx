@@ -8,7 +8,7 @@ import {
 
 export function HorizontalCard({ post }) {
   return (
-    <Card className="`bg-white shadow-md rounded-md p-2 flex flex-col md:flex-row sm:flex-col items-start md:items-center justify-between mx-4 mt-20 mb-16 md:flex">
+    <Card className="`bg-white shadow-md rounded-md p-2 flex flex-col md:flex-row sm:flex-col items-start md:items-center justify-between mx-4 mt-24 mb-16 md:flex">
       <CardHeader
         shadow={true}
         floated={true}
