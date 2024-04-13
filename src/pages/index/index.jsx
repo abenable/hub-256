@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import BrowseCard from "../../components/cards/browseCard";
 import { HorizontalCard } from "../../components/cards/horizontalCard";
 import { Spinner, Typography } from "@material-tailwind/react";
-
 import LatestPostsCard from "../../components/cards/latest";
 
 export default function IndexPage() {
