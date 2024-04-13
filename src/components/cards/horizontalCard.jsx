@@ -8,7 +8,7 @@ import {
 
 export function HorizontalCard({ post }) {
   return (
-    <Card className="`bg-white shadow-md rounded-md p-2 flex flex-col md:flex-row sm:flex-col items-start md:items-center justify-between mx-4 my-20 md:flex">
+    <Card className="`bg-white shadow-md rounded-md p-2 flex flex-col md:flex-row sm:flex-col items-start md:items-center justify-between mx-4 mt-20 mb-16 md:flex">
       <CardHeader
         shadow={true}
         floated={true}
@@ -24,7 +24,7 @@ export function HorizontalCard({ post }) {
         <Typography
           variant="h6"
           color="purple"
-          className="mb-4 inline-flex text-purple-700 bg-purple-50 bg-opacity-50 font-medium text-base py-1 px-3 rounded-full capitalize"
+          className="mb-4 inline-flex text-purple-700 bg-deep-purple-100 bg-opacity-50 font-medium text-base py-1 px-3 rounded-full capitalize"
         >
           {post.category}
         </Typography>
