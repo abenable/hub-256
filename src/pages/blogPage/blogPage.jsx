@@ -26,19 +26,27 @@ const BlogPage = () => {
   }, []);
 
   return (
-    <div className="container mt-20 mx-auto flex flex-col items-center justify-center w-2/3">
+    <div className="container mt-20 mx-auto flex flex-col items-center justify-center md:w-2/3">
       {post ? (
         <div className="container items-center justify-center">
-          <Typography variant="h2">{post.title}</Typography>{" "}
+          <Typography
+            variant="h2"
+            className="text-dark mb-3.5 text-2xl font-bold sm:text-4xl xl:text-heading-3"
+          >
+            {post.title}
+          </Typography>{" "}
           <img
             className="h-96 w-full rounded-lg object-cover object-center shadow-xl shadow-blue-gray-900/50 my-10"
             src={post.urlToImg}
             alt="nature image"
           />
-          <Typography variant="h4" className="pb-6">
+          <Typography
+            variant="h5"
+            className="pb-5 text-dark mb-3.5 md:text-2xl sm:text-base font-bold"
+          >
             {post.description}
           </Typography>
-          <Typography>{post.content}</Typography>
+          <Typography className="mx-4">{post.content}</Typography>
         </div>
       ) : (
         <div className="justify-center items-center flex">
