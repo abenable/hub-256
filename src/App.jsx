@@ -10,6 +10,7 @@ import CreatePost from "./pages/createPost/createPost";
 import { Register } from "./pages/register/register";
 import Navbar from "./components/navbar/navbar2.0";
 import BlogPage from "./pages/blogPage/blogPage";
+import { Login } from "./pages/login/login";
 
 function App() {
   const [isVisible, setIsVisible] = useState(false);
@@ -45,6 +46,7 @@ function App() {
         <Route path="register" element={<Register />} />
         <Route path="newpost" element={<CreatePost />} />
         <Route path="blogs" element={<Blogs />} />
+        <Route path="login" element={<Login />} />
         <Route path="support" element={<Support />} />
         <Route path="blog/id/:postId" element={<BlogPage />} />
       </Routes>
