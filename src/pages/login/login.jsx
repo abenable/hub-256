@@ -58,18 +58,16 @@ export function Login() {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className=" !border-t-blue-gray-200 focus:!border-t-gray-100"
           />
 
           <Input
-            type="password"
+            label="Password"
             size="lg"
             id="password"
             name="password"
             value={formData.password}
             onChange={handleChange}
-            label="Password"
-            className=" !border-t-blue-gray-200 focus:!border-t-gray-100"
+            inputProps={{ type: "password" }}
           />
         </div>
         <Checkbox
