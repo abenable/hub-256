@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import BrowseCard from "../../components/cards/browseCard";
 import { HorizontalCard } from "../../components/cards/horizontalCard";
 import { Spinner, Typography } from "@material-tailwind/react";
-
 import LatestPostsCard from "../../components/cards/latest";
 
 export default function IndexPage() {
@@ -50,7 +49,10 @@ export default function IndexPage() {
           <Spinner className="h-16 w-16 text-gray-900/50" />
         </div>
       )}
-      <Typography variant="h3" className="items-center justify-center flex">
+      <Typography
+        variant="h2"
+        className="items-center justify-center flex text-dark mb-3.5 text-2xl font-bold sm:text-4xl xl:text-heading-3"
+      >
         Latest blogs
       </Typography>
       <div className="flex flex-row gap-3">

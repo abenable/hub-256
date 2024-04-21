@@ -1,8 +1,79 @@
+import { Button, Spinner, Typography } from "@material-tailwind/react";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import PostCard from "../../components/cards/postCard";
+
 const Blogs = () => {
+  const [posts, setPosts] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
+  const API_URL =
+    import.meta.env.MODE === "development"
+      ? import.meta.env.VITE_LOCAL_URL
+      : import.meta.env.VITE_URL;
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const url =
+          selectedCategory === "All"
+            ? `${API_URL}/blog/all`
+            : `${API_URL}/blog/category/${selectedCategory}`;
+        const response = await axios.get(url);
+        setPosts(response.data);
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
+    };
+
+    fetchPosts();
+  }, [selectedCategory]);
+
+  const categories = [
+    "All",
+    "Technology",
+    "Lifestyle",
+    "Sports",
+    "Health",
+    "Business",
+    "Politics",
+  ];
+
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
+  };
   return (
-    <div>
-      <h1>Welcome to the Blogs Page</h1>
-      <p>This is a sample component for the blogs page.</p>
+    <div className="mt-24 container flex !w-full max-w-6xl flex-col !items-center justify-center rounded-2xl px-2 py-4">
+      <Typography
+        variant="h2"
+        className="text-dark mb-3.5 text-2xl font-bold sm:text-4xl xl:text-heading-3"
+      >
+        All Blogs
+      </Typography>
+      <div className="container mx-auto flex !w-full max-w-6xl !items-center justify-center rounded-2xl px-6 py-3 gap-4 flex-wrap mb-5 my-2">
+        {categories.map((category) => (
+          <Button
+            key={category}
+            size="md"
+            className={`rounded-full border font-medium capitalize text-base sm:text-xs md:text-base focus:bg-black focus:border-dark focus:text-white hover:bg-gray-900 hover:border-dark hover:text-white ease-in duration-200 bg-gray-100 border-gray-3 text-dark ${
+              selectedCategory === category ? "bg-black text-white" : ""
+            }`}
+            onClick={() => handleCategoryClick(category)}
+          >
+            {category}
+          </Button>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:gap-16 p-4">
+        {posts && posts.length > 0 ? (
+          posts.map((post) => <PostCard key={post.id} post={post} />)
+        ) : (
+          <div className="justify-center items-center flex">
+            <Spinner className="h-12 w-12" />
+          </div>
+        )}
+      </div>
     </div>
   );
 };

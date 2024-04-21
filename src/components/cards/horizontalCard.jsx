@@ -5,10 +5,11 @@ import {
   Typography,
   Button,
 } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 
 export function HorizontalCard({ post }) {
   return (
-    <Card className="`bg-white shadow-md rounded-md p-2 flex flex-col md:flex-row sm:flex-col items-start md:items-center justify-between mx-4 my-20 md:flex">
+    <Card className="`bg-white shadow-md rounded-md p-2 flex flex-col md:flex-row sm:flex-col items-start md:items-center justify-between mx-4 mt-24 mb-16 md:flex">
       <CardHeader
         shadow={true}
         floated={true}
@@ -24,7 +25,7 @@ export function HorizontalCard({ post }) {
         <Typography
           variant="h6"
           color="purple"
-          className="mb-4 inline-flex text-purple-700 bg-purple-50 bg-opacity-50 font-medium text-base py-1 px-3 rounded-full capitalize"
+          className="mb-4 inline-flex text-purple-700 bg-deep-purple-100 bg-opacity-50 font-medium text-base py-1 px-3 rounded-full capitalize"
         >
           {post.category}
         </Typography>
@@ -38,7 +39,7 @@ export function HorizontalCard({ post }) {
         <Typography color="gray" className="mb-8 font-normal">
           {post.description}
         </Typography>
-        <a href={post.learnMoreUrl} className="inline-block">
+        <Link to={`/blog/id/${post._id}`} className="inline-block">
           <Button variant="text" className="flex items-center gap-2">
             Learn More
             <svg
@@ -56,7 +57,7 @@ export function HorizontalCard({ post }) {
               />
             </svg>
           </Button>
-        </a>
+        </Link>
       </CardBody>
     </Card>
   );

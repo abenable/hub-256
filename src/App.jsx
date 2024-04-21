@@ -5,11 +5,12 @@ import NewsLetter from "./components/newsletter/newsletter";
 import { useEffect, useState } from "react";
 import { Button } from "@material-tailwind/react";
 import Blogs from "./pages/blogs/blogs";
-import BlogDetails from "./pages/blogDetails/blogDetails";
 import Support from "./pages/support/support";
 import CreatePost from "./pages/createPost/createPost";
 import { Register } from "./pages/register/register";
 import Navbar from "./components/navbar/navbar2.0";
+import BlogPage from "./pages/blogPage/blogPage";
+import { Login } from "./pages/login/login";
 
 function App() {
   const [isVisible, setIsVisible] = useState(false);
@@ -37,7 +38,7 @@ function App() {
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
   return (
-    <div className="App">
+    <div className="App mx-4">
       <Navbar />
 
       <Routes>
@@ -45,8 +46,9 @@ function App() {
         <Route path="register" element={<Register />} />
         <Route path="newpost" element={<CreatePost />} />
         <Route path="blogs" element={<Blogs />} />
+        <Route path="login" element={<Login />} />
         <Route path="support" element={<Support />} />
-        <Route path="blogdetails" element={<BlogDetails />} />
+        <Route path="blog/id/:postId" element={<BlogPage />} />
       </Routes>
       <NewsLetter />
       {isVisible && (
