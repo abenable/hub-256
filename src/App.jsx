@@ -11,6 +11,7 @@ import { Register } from "./pages/register/register";
 import Navbar from "./components/navbar/navbar2.0";
 import BlogPage from "./pages/blogPage/blogPage";
 import { Login } from "./pages/login/login";
+import Footer from "./components/footer/footer";
 
 function App() {
   const [isVisible, setIsVisible] = useState(false);
@@ -51,6 +52,7 @@ function App() {
         <Route path="blog/id/:postId" element={<BlogPage />} />
       </Routes>
       <NewsLetter />
+      <Footer />
       {isVisible && (
         <div
           onClick={scrollToTop}
