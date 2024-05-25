@@ -16,12 +16,7 @@ import {
   Button,
 } from "@material-tailwind/react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
-import {
-  GlobeAmericasIcon,
-  SquaresPlusIcon,
-  TagIcon,
-  UserGroupIcon,
-} from "@heroicons/react/24/solid";
+import { GlobeAmericasIcon, UserGroupIcon } from "@heroicons/react/24/solid";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import AlertComp from "../alert/alertComp";
@@ -178,15 +173,16 @@ const Navbar = () => {
                 <Card className="mx-auto w-full max-w-[24rem]">
                   <CardBody className="flex flex-col gap-4">
                     <Typography variant="h4" color="blue-gray">
-                      Be the first who see the news
+                      Subscribe Now for Exclusive Updates!
                     </Typography>
                     <Typography
                       className="mb-3 font-normal"
                       variant="paragraph"
                       color="gray"
                     >
-                      Your company may not be in the software business, but
-                      eventually, a software company will be in your business.{" "}
+                      Get the latest trends, tips, and insider insights
+                      delivered straight to your inbox. Don&apos;t miss
+                      out—subscribe today! 🚀
                     </Typography>
 
                     <Input
