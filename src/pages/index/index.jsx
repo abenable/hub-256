@@ -55,7 +55,7 @@ export default function IndexPage() {
       >
         Latest blogs
       </Typography>
-      <div className="flex flex-row gap-3">
+      <div className="flex md:flex-row justify-around  flex-col gap-3">
         {latestPosts ? (
           latestPosts.map((post) => (
             <LatestPostsCard key={post._id} post={post} />
