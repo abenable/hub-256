@@ -1,39 +1,38 @@
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  Typography,
-} from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 
 export default function LatestPostsCard({ post }) {
   return (
-    <Card className="bg-white w-full sm:w-1/2 shadow-md rounded-md px-3 flex flex-col sm:flex-row items-start md:items-center justify-between mx-2 sm:pb-2 sm:mx-1 my-2">
-      <CardHeader className="w-full m-0 shrink-0 rounded-md md:w-2/5 rounded-t-md md:rounded-t-none md:rounded-l-md">
-        {" "}
-        <Link to={`/blog/id/${post._id}`}>
-          <img
-            className="sm:h-32 w-full rounded-lg object-cover object-center shadow-xl"
-            src={post.urlToImg}
-            alt="nature image"
-          />
-        </Link>
-      </CardHeader>{" "}
+    <div className="max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <Link to={`/blog/id/${post._id}`}>
-        <CardBody>
-          <Typography
-            variant="h6"
-            color="purple"
-            className="mb-2 inline-flex text-purple-700  bg-deep-purple-100 bg-opacity-50 font-medium text-base px-3 rounded-full capitalize"
+        <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+          {post.title}
+        </h5>
+
+        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          {post.description}
+        </p>
+        <Link
+          to={`/blog/id/${post._id}`}
+          class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >
+          Read more
+          <svg
+            className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 14 10"
           >
-            {post.category}
-          </Typography>
-          <Typography color="blue-gray" className="mb-1 sm:text-base font-bold">
-            {post.title}
-          </Typography>
-          <a href={post.learnMoreUrl} className="inline-block"></a>
-        </CardBody>
+            <path
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M1 5h12m0 0L9 1m4 4L9 9"
+            />
+          </svg>
+        </Link>
       </Link>
-    </Card>
+    </div>
   );
 }
