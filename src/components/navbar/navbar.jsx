@@ -1,68 +1,42 @@
 import React, { useState } from "react";
+import image from "./logo.jpg";
 import {
-  Navbar,
   Collapse,
   Typography,
-  Button,
-  IconButton,
-  List,
   ListItem,
-  Dialog,
-  Card,
-  CardBody,
-  CardFooter,
-  Input,
   Menu,
   MenuHandler,
   MenuList,
   MenuItem,
+  Input,
+  Dialog,
+  Card,
+  CardBody,
+  CardFooter,
+  Button,
 } from "@material-tailwind/react";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import {
-  ChevronDownIcon,
-  Bars3Icon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
-import {
-  Bars4Icon,
   GlobeAmericasIcon,
   SquaresPlusIcon,
-  SunIcon,
   TagIcon,
   UserGroupIcon,
 } from "@heroicons/react/24/solid";
-import { Link } from "react-router-dom";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import AlertComp from "../alert/alertComp";
 
 const navListMenuItems = [
-  {
-    title: "Blog",
-    description: "Find the perfect solution for your needs.",
-    icon: Bars4Icon,
-  },
   {
     title: "About Us",
     description: "Meet and learn about our dedication",
     icon: UserGroupIcon,
   },
-  {
-    title: "Products",
-    description: "Find the perfect solution for your needs.",
-    icon: SquaresPlusIcon,
-  },
-  {
-    title: "Services",
-    description: "Learn how we can help you achieve your goals.",
-    icon: SunIcon,
-  },
+
   {
     title: "Support",
     description: "Reach out to us for assistance or inquiries",
     icon: GlobeAmericasIcon,
-  },
-  {
-    title: "Special Offers",
-    description: "Explore limited-time deals and bundles",
-    icon: TagIcon,
   },
 ];
 
@@ -72,12 +46,12 @@ function NavListMenu() {
   const renderItems = navListMenuItems.map(
     ({ icon, title, description }, key) => (
       <a href="#" key={key}>
-        <MenuItem className="flex items-center gap-3 rounded-lg">
+        <MenuItem className="flex items-center gap-2 rounded-lg">
           <div className="flex items-center justify-center rounded-lg !bg-blue-gray-50 p-2 ">
             {" "}
             {React.createElement(icon, {
               strokeWidth: 2,
-              className: "h-6 text-gray-900 w-6",
+              className: "h-6 text-gray-900 w-5",
             })}
           </div>
           <div>
@@ -110,13 +84,13 @@ function NavListMenu() {
         allowHover={true}
       >
         <MenuHandler>
-          <Typography as="div" variant="h5" className="font-medium">
+          <Typography as="a" className="font-medium">
             <ListItem
-              className="flex items-center gap-2 py-2 pr-4 font-medium text-gray-900"
+              className="flex items-center gap-2 py-1 pr-4 font-medium text-gray-900"
               selected={isMenuOpen || isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen((cur) => !cur)}
             >
-              Resources
+              Others
               <ChevronDownIcon
                 strokeWidth={2.5}
                 className={`hidden h-3 w-3 transition-transform lg:block ${
@@ -133,7 +107,7 @@ function NavListMenu() {
           </Typography>
         </MenuHandler>
         <MenuList className="hidden max-w-screen-xl rounded-xl lg:block">
-          <ul className="grid grid-cols-3 gap-y-2 outline-none outline-0">
+          <ul className="grid grid-cols-2 gap-y-2 outline-none outline-0">
             {renderItems}
           </ul>
         </MenuList>
@@ -145,33 +119,10 @@ function NavListMenu() {
   );
 }
 
-function NavList() {
-  return (
-    <List className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex-row lg:p-1">
-      <Typography
-        as="a"
-        href="#"
-        variant="h5"
-        color="blue-gray"
-        className="font-medium"
-      >
-        <ListItem className="flex items-center gap-2 py-2 pr-4">
-          <Link to={""}>Home</Link>
-        </ListItem>
-      </Typography>
-      <NavListMenu />
-      <Typography variant="h5" color="blue-gray" className="font-medium">
-        <ListItem className="flex items-center gap-2 py-2 pr-4">
-          <Link to={"support"}>Support</Link>
-        </ListItem>
-      </Typography>
-    </List>
-  );
-}
-
-export function NavbarMenu() {
-  const [openNav, setOpenNav] = React.useState(false);
+const Navbar = () => {
   const [open, setOpen] = React.useState(false);
+  const [sub, setSub] = React.useState();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const handleOpen = () => setOpen((cur) => !cur);
   const [email, setEmail] = useState(""); // Initialize email state
 
@@ -182,96 +133,133 @@ export function NavbarMenu() {
 
   const subscribe = async () => {
     try {
-      await axios.post(`${API_URL}/users/subscribe`, {
+      const response = await axios.post(`${API_URL}/users/subscribe`, {
         email: email, // Use the email state value
       });
+      setSub(response.data.message);
       handleOpen();
     } catch (error) {
       console.error(error); // Handle the error as needed
     }
   };
 
-  React.useEffect(() => {
-    window.addEventListener(
-      "resize",
-      () => window.innerWidth >= 960 && setOpenNav(false)
-    );
-  }, []);
+  const navLinks = [
+    { title: "Home", href: "/" },
+    { title: "Blogs", href: "blogs" },
+    { title: "Services", component: NavListMenu },
+  ];
 
   return (
-    <Navbar className="sticky top-0 z-10 h-max py-2 mx-auto mt-4 w-full items-center">
-      <div className="flex items-center justify-between text-blue-gray-900">
-        <Typography
-          as="a"
-          variant="h1"
-          className="mr-4 cursor-pointer py-1.5 lg:ml-2"
-        >
-          Hub256
-        </Typography>
-        <div className="hidden lg:block">
-          <NavList />
-        </div>
-        <div className="hidden gap-2 lg:flex">
-          <Button size="md" variant="gradient" onClick={handleOpen}>
-            Subscribe{" "}
-          </Button>
-          <Dialog
-            size="xs"
-            open={open}
-            handler={handleOpen}
-            className="bg-transparent shadow-none"
-            responsive
-          >
-            <Card className="mx-auto w-full max-w-[24rem]">
-              <CardBody className="flex flex-col gap-4">
-                <Typography variant="h4" color="blue-gray">
-                  Be the first who see the news
-                </Typography>
-                <Typography
-                  className="mb-3 font-normal"
-                  variant="paragraph"
-                  color="gray"
-                >
-                  Your company may not be in the software business, but
-                  eventually, a software company will be in your business.{" "}
-                </Typography>
+    <>
+      <nav>
+        <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+          <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <Link
+              to="/"
+              className="flex items-center space-x-3 rtl:space-x-reverse"
+            >
+              <img src={image} className="h-12" alt="Flowbite Logo" />
+            </Link>
+            <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+              <button
+                type="button"
+                onClick={handleOpen}
+                className="text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+              >
+                Get started
+              </button>
+              <Dialog
+                size="xs"
+                open={open}
+                handler={handleOpen}
+                className="bg-transparent shadow-none"
+                responsive
+              >
+                <Card className="mx-auto w-full max-w-[24rem]">
+                  <CardBody className="flex flex-col gap-4">
+                    <Typography variant="h4" color="blue-gray">
+                      Be the first who see the news
+                    </Typography>
+                    <Typography
+                      className="mb-3 font-normal"
+                      variant="paragraph"
+                      color="gray"
+                    >
+                      Your company may not be in the software business, but
+                      eventually, a software company will be in your business.{" "}
+                    </Typography>
 
-                <Input
-                  label="Email"
-                  value={email} // Set the value of the input field to the email state
-                  onChange={(e) => setEmail(e.target.value)} // Update the email state on input change
-                  size="lg"
-                />
-              </CardBody>
-              <CardFooter className="pt-0">
-                <Button variant="gradient" onClick={subscribe} fullWidth>
-                  Subscribe
-                </Button>
-              </CardFooter>
-            </Card>
-          </Dialog>
-        </div>
-        <IconButton
-          variant="text"
-          color="blue-gray"
-          className="lg:hidden"
-          onClick={() => setOpenNav(!openNav)}
-        >
-          {openNav ? (
-            <XMarkIcon className="h-6 w-6" strokeWidth={2} />
-          ) : (
-            <Bars3Icon className="h-6 w-6" strokeWidth={2} />
-          )}
-        </IconButton>
-      </div>
-      <Collapse open={openNav}>
-        <NavList />
-        <div className="flex w-full flex-nowrap items-center gap-2 lg:hidden">
-          <Button variant="gradient" size="sm" fullWidth>
-            Subscribe
-          </Button>
-        </div>
-      </Collapse>
-    </Navbar>
+                    <Input
+                      label="Email"
+                      value={email} // Set the value of the input field to the email state
+                      onChange={(e) => setEmail(e.target.value)} // Update the email state on input change
+                      size="lg"
+                    />
+                  </CardBody>
+                  <CardFooter className="pt-0">
+                    <Button variant="gradient" onClick={subscribe} fullWidth>
+                      Subscribe
+                    </Button>
+                  </CardFooter>
+                </Card>
+              </Dialog>
+              <button
+                data-collapse-toggle="navbar-sticky"
+                type="button"
+                className="inline-flex items-center p-1 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                aria-controls="navbar-sticky"
+                aria-expanded={isMenuOpen}
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+              >
+                <svg
+                  className="w-5 h-5"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 17 14"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M1 1h15M1 7h15M1 13h15"
+                  />
+                </svg>
+              </button>{" "}
+            </div>
+            <div
+              className={`navbar-sticky ${
+                isMenuOpen
+                  ? "block items-center justify-between w-full md:flex md:w-auto md:order-1"
+                  : 'hidden  items-center justify-between w-full md:flex md:w-auto md:order-1"'
+              }`}
+              id="navbar-sticky"
+            >
+              <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                {navLinks.map((link, index) => (
+                  <li key={index}>
+                    {link.href ? (
+                      <Link
+                        to={link.href}
+                        className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                        aria-current="page"
+                      >
+                        {link.title}
+                      </Link>
+                    ) : (
+                      <link.component />
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </nav>
+      {sub ? <AlertComp message={sub} /> : null}
+    </>
   );
-}
+};
+
+export default Navbar;

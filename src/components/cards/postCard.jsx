@@ -1,51 +1,42 @@
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Typography,
-  Button,
-} from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 
 export default function PostCard({ post }) {
   return (
-    <Card className="my-8 mx-1 sm:w-68 md:w-72 lg:w-96">
-      <CardHeader color="blue-gray" className="relative h-56">
-        {" "}
-        <Link to={`/blog/id/${post._id}`}>
-          <img src={post.urlToImg} alt="card-image" />
-        </Link>
-      </CardHeader>{" "}
+    <div className="max-w-md bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-4">
       <Link to={`/blog/id/${post._id}`}>
-        <CardBody>
-          <Typography variant="h5" color="blue-gray" className="mb-2">
-            {post.title}
-          </Typography>
-          <Typography>{post.description}</Typography>
-        </CardBody>
+        <img className="rounded-t-lg" src={post.urlToImg} alt="" />
       </Link>
-      <CardFooter className="pt-0">
-        <Link to={`/blog/id/${post._id}`} className="inline-block">
-          <Button size="sm" variant="text" className="flex items-center gap-2">
-            Learn More
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={2}
-              stroke="currentColor"
-              className="h-4 w-4"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-              />
-            </svg>
-          </Button>
+      <div className="p-4">
+        <Link to={`/blog/id/${post._id}`}>
+          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            {post.title}
+          </h5>
         </Link>
-      </CardFooter>
-    </Card>
+        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          {post.description}
+        </p>
+        <Link
+          to={`/blog/id/${post._id}`}
+          class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >
+          Read more
+          <svg
+            className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 14 10"
+          >
+            <path
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M1 5h12m0 0L9 1m4 4L9 9"
+            />
+          </svg>
+        </Link>
+      </div>
+    </div>
   );
 }
