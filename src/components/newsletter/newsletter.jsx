@@ -35,7 +35,7 @@ export function NewsLetter() {
           className="my-3 text-center !text-base md:w-7/12"
         >
           Get the latest trends, tips, and insider insights delivered straight
-          to your inbox. Don't miss out—subscribe today! 🚀
+          to your inbox. Don&apos;t miss out—subscribe today! 🚀
         </Typography>
         <div className="mt-2 flex w-full flex-col gap-3 md:w-fit md:flex-row">
           <Input
