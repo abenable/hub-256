@@ -28,14 +28,14 @@ export function NewsLetter() {
           className="text-center text-2xl font-bold md:text-3xl"
           color="white"
         >
-          Be the first who see the news
+          Subscribe Now for Exclusive Updates!
         </Typography>
         <Typography
           color="white"
           className="my-3 text-center !text-base md:w-7/12"
         >
-          Your company may not be in the software business, but eventually, a
-          software company will be in your business.
+          Get the latest trends, tips, and insider insights delivered straight
+          to your inbox. Don&apos;t miss out—subscribe today! 🚀
         </Typography>
         <div className="mt-2 flex w-full flex-col gap-3 md:w-fit md:flex-row">
           <Input
