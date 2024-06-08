@@ -37,7 +37,7 @@ const BlogPage = () => {
           </Typography>{" "}
           <img
             className="h-96 w-full rounded-lg object-cover object-center shadow-xl shadow-blue-gray-900/50 my-10"
-            src={post.urlToImg}
+            src={post.image}
             alt="nature image"
           />
           <Typography

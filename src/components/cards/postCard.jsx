@@ -4,7 +4,7 @@ export default function PostCard({ post }) {
   return (
     <div className="max-w-md bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-4">
       <Link to={`/blog/id/${post._id}`}>
-        <img className="rounded-t-lg" src={post.urlToImg} alt="" />
+        <img className="rounded-t-lg" src={post.image} alt="" />
       </Link>
       <div className="p-4">
         <Link to={`/blog/id/${post._id}`}>
