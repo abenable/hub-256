@@ -12,8 +12,10 @@ import Navbar from "./components/navbar/navbar";
 import BlogPage from "./pages/blogPage/blogPage";
 import { Login } from "./pages/login/login";
 import Footer from "./components/footer/footer";
+import Loader from "./components/loader";
 
 function App() {
+  const [loading, setLoading] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
 
   // Show button when page is scrolled upto given distance
@@ -38,7 +40,14 @@ function App() {
     window.addEventListener("scroll", toggleVisibility);
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
-  return (
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 1500);
+  }, []);
+
+  return loading ? (
+    <Loader />
+  ) : (
     <div className="App mx-4">
       <Navbar />
 
